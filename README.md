@@ -7,6 +7,8 @@ Things you may want to cover:
 
 * Ruby version
 
+* this is a test
+
 * System dependencies
 
 * Configuration
