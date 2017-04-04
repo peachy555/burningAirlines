@@ -1,8 +1,34 @@
 <!-- For user to search for desired flight  -->
 
-<!-- input field for departure and destination -->
+<!-- render customer_menu -->
 
+<input id="search_dept" type="text" name="" value="">
+<input id="search_dest" type="text" name="" value="">
 
+<button id="search_submit" type="button" name="button">Save</button>
 
-<!-- display of all matching flights -->
-  <!-- list of all flights, as link to flight#show (flights/:flight_id) -->
+<h2>Flight Search Results</h2>
+
+<script id="SearchListTemplate" type="text/template">
+  <!-- Template show data of each flight that matches search inputs -->
+  {{ _.each(flights, function(flight){ }}
+    <div class="container">
+      <div class="search_flight_date">
+        {{= flight.get("date") }}
+      </div>
+      <div class="search_flight_name">
+        {{= flight.get("flight_name") }}
+      </div>
+      <div class="search_flight_dept">
+        {{= flight.get("departure") }}
+      </div>
+      <div class="search_flight_dest">
+        {{= flight.get("destination") }}
+      </div>
+      <div class="search_plane_name">
+        <!-- {{= flight.get("plane_id") }} -->
+        Find a way to get plane_id from flight
+      </div>
+    </div>
+  {{ }) }}
+</script>
