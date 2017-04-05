@@ -19,6 +19,7 @@ App.FlightsListView = Backbone.View.extend({
     var planeRow = plane.get("row");
     var planeCol = plane.get("col");
 
+    $("#seatSelection").empty();
     for (var r = 1; r <= planeRow; r++) {
       var newRow = $("<div>").attr( "id" , "row" + r ).addClass("seatRows");
       $("#seatSelection").append(newRow);
