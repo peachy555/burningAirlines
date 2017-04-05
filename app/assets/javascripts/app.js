@@ -17,9 +17,9 @@ $(document).ready(function(){
   App.reservations.fetch();
 
   // $(document).on("click", "#reservation_submit", function(){
-  //   console.log("submit butte");
+  //   console.log("submit button");
   // })
-  
+
   // setInterval(function(){
   //   App.flights.fetch();
   // }, 2000);
