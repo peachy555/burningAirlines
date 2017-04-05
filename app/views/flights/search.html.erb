@@ -36,14 +36,27 @@
       <hr>
     </div>
   {{ }) }}
+
+  <div id="seatSelection"></div>
 </script>
 
 <!-- ================================================================================ -->
 
-<div id="seatSelection"></div>
+
 
 <script id="seatSelectionTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  <div>Reservation stuff</div>
-  <button id="reservationSubmit">Select Seat</button>
+  for row
+var
+    var newRow = $("<div>").attr( "id", "row" + row ) <!-- row1 -->
+    $("#seating-grid").append(newRow);
+      for col
+        var newSeat$("<div>").attr( "id", row + "-" + col )
+        var newSeat
 </script>
+  <div id="seating-grid">
+    <div class="single-seat">
+
+    </div>
+    Reservation stuff</div>
+  <button id="reservationSubmit">Select Seat</button>
