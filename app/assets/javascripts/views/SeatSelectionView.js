@@ -5,14 +5,16 @@ App.SeatSelectionView = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(App.reservations, "change sync", this.render);
+    this.listenTo($("#reservation_submit"), "click", this.reservationSubmit);
     // $(document).on("click", "#reservation_submit", function() {
+    //   debugger
     //   this.reservationSubmit();
     // });
   },
 
   events: {
-    "click .seats": "select",
-    "click #reservation_submit": "reservationSubmit"
+    "click div.seats": "select",
+    "click button#reservation_submit": "reservationSubmit"
   },
 
   el: "#seat_selection",
