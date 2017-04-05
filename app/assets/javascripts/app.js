@@ -7,7 +7,6 @@ $(document).ready(function(){
   App.router = new App.Router();
   App.flights = new App.Flights();
   App.flights.fetch().done(function(data){
-    debugger
     Backbone.history.start();
   });
 

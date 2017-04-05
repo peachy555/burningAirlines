@@ -6,7 +6,6 @@ App.FlightsListView = Backbone.View.extend({
   },
   el: "#flightsList",
   render: function(){
-    debugger
     var template = _.template($("#flightsListTemplate").html());
     this.$el.html(template(this.collection));
   }

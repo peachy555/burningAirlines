@@ -25,17 +25,15 @@
       <div class="search_flight_name">
         {{= flight.get("flight_name") }}
       </div>
-      <div class="search_flight_dept">
-        {{= flight.get("departure") }}
-      </div>
-      <div class="search_flight_dest">
-        {{= flight.get("destination") }}
+      <div class="search_flight_direction">
+        {{= flight.get("destination") }} -> {{= flight.get("departure") }}
       </div>
       <div class="search_plane_name">
         plane_name
         <!-- {{= flight.get("plane_id") }} ????? -->
         <!-- Find a way to get plane_id from flight -->
       </div>
+      <hr>
     </div>
   {{ }) }}
 </script>
