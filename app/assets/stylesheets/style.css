@@ -4,3 +4,8 @@
   border: 1px solid black;
   display: inline-block;
 }
+
+#summary_display {
+  float: right;
+  display: none;
+}
