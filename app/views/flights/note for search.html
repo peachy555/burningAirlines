@@ -1,23 +1,11 @@
-<!-- For user to search for desired flight  -->
 
-<!-- render customer_menu -->
-<div id="flightSearch"></div>
+<!-- ================================================================================================ -->
 
-<script id="flightSearchTemplate" type="text/template">
-  <input id="search_dept" type="text" name="" value="">
-  <input id="search_dest" type="text" name="" value="">
-
-  <button id="search_submit" type="button" name="button">Search</button>
-
-  <h2>Flight Search Results</h2>
-
-  <div id="flightsList"></div>
-
-</script>
+<div id="flightsList"></div>
 
 <script id="flightsListTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  {{ _.each(models, function(flight){ }}
+  {{ _.each(flights, function(flight){ }}
     <div class="container">
       <div class="search_flight_date">
         {{= flight.get("date") }}

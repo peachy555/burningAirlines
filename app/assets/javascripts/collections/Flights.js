@@ -1,6 +1,6 @@
 var App = App || {};
 
 App.Flights = Backbone.Collection.extend({
-  model: flight,
+  model: App.Flight,
   url: '/flights'
 })
