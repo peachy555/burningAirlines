@@ -19,19 +19,19 @@
   <!-- Template show data of each flight that matches search inputs -->
   {{ _.each(models, function(flight){ }}
     <div class="flight_item" id= {{= flight.get("id") }}>
-      <div class="search_flight_date">
-        {{= flight.get("date") }}
-      </div>
       <div class="search_flight_number">
-        {{= flight.get("flight_number") }}
+        Flight Number: {{= flight.get("flight_number") }}
       </div>
       <div class="search_flight_direction">
         {{= flight.get("departure") }} -> {{= flight.get("destination") }}
       </div>
       <div class="search_plane_name">
-        plane_name
-        <!-- {{= flight.get("plane_id") }} ????? -->
+        <!-- plane_name -->
+        {{= App.airplanes.get(flight.get("airplane_id")).get("name") }}
         <!-- Find a way to get plane_id from flight -->
+      </div>
+      <div class="search_flight_date">
+        Date: {{= flight.get("date") }}
       </div>
       <hr>
     </div>

@@ -5,6 +5,9 @@ App.SeatSelectionView = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(App.reservations, "change sync", this.render);
+    // $(document).on("click", "#reservation_submit", function() {
+    //   this.reservationSubmit();
+    // });
   },
 
   events: {
@@ -32,7 +35,6 @@ App.SeatSelectionView = Backbone.View.extend({
     } else {
       alert("Seat Reserved.");
     }
-    // create reservation
 
     this.reservationSummary();
   },
@@ -77,6 +79,9 @@ App.SeatSelectionView = Backbone.View.extend({
                        .append($flightDirection)
                        .append($planeName)
                        .append($selectedSeat);
-  } //reservationSubmit
+  }, //reservationSummary
 
-}) //App.SeatSelectionView
+  reservationSubmit: function() {
+    debugger
+  }
+}); //App.SeatSelectionView
