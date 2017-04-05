@@ -1,6 +1,9 @@
 var App = App || {};
 
 App.FlightSearchView = Backbone.View.extend({
+  // initialize: function() {
+  //   this.render();
+  // },
   events: {
     "click #search_submit":"search"
   },
@@ -19,7 +22,9 @@ App.FlightSearchView = Backbone.View.extend({
       this.collection.models = sortedFlight;
       // var view = new App.FlightsListView({collection: sortedFlight});
       var view = new App.FlightsListView({collection: this.collection});
-      debugger
+      view.render();
+    } else {
+      var view = new App.FlightsListView({collection: this.collection});
       view.render();
     }
   },

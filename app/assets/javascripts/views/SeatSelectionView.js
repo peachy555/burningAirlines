@@ -1,17 +1,21 @@
 var App = App || {};
 
 App.SeatSelectionView = Backbone.View.extend({
+  initialize: function(options){
+    debugger
+    this.listenTo(App.reservations, "change sync", this.render);
+  },
   events: {
-    "click #reservationSubmit": "select"
+    "click .seats": "select",
+    "click #reservationSubmit": "reservationSubmit"
   },
   el: "#seatSelection",
   render: function() {
-    this.$el.html($("#seatSelectionTemplate").html());
-    var view = new App.FlightSearchView({collection: this.collection});
-    view.render();
+    // console.log("rendering seatSelection");
+    // this.$el.html($("#seatSelectionTemplate").html());
   },
   select: function() {
-    
+    debugger
     // create reservation
   }
 })

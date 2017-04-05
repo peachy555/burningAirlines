@@ -45,7 +45,8 @@ end
 airplanes = [
   {
     name: "Burning Airplane",
-    row: (9)+1,
+    # row and col represent plane capacity of 10X6 seats
+    row: 10,
     col: 6,
     flights: [
       {
@@ -56,23 +57,23 @@ airplanes = [
         reservations: [
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           }
         ] # reservations
       },
@@ -84,8 +85,8 @@ airplanes = [
         reservations: [
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           }
         ] # reservations
       },
@@ -97,13 +98,13 @@ airplanes = [
         reservations: [
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(10)+1).to_s,
+            seat_col: (rand(6)+1).to_s
           },
         ] # reservations
       },
@@ -123,13 +124,13 @@ airplanes = [
         reservations: [
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           }
         ] # reservations
       },
@@ -141,33 +142,33 @@ airplanes = [
         reservations: [
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           },
           {
             user_id: User.find(rand(9)+1).id,
-            seat_row: rand(11).to_s,
-            seat_col: rand(7).to_s
+            seat_row: (rand(8)+1).to_s,
+            seat_col: (rand(4)+1).to_s
           }
         ] # reservations
       }

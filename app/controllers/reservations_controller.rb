@@ -1,4 +1,8 @@
-def ReservationsController < ApplicationController
+class ReservationsController < ApplicationController
+
+  def index
+    render json: Reservation.all
+  end
 
   def create
 

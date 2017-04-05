@@ -18,15 +18,15 @@
 <script id="flightsListTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
   {{ _.each(models, function(flight){ }}
-    <div class="container">
+    <div class="flight_item" id= {{= flight.get("id") }}>
       <div class="search_flight_date">
         {{= flight.get("date") }}
       </div>
-      <div class="search_flight_name">
-        {{= flight.get("flight_name") }}
+      <div class="search_flight_number">
+        {{= flight.get("flight_number") }}
       </div>
       <div class="search_flight_direction">
-        {{= flight.get("destination") }} -> {{= flight.get("departure") }}
+        {{= flight.get("departure") }} -> {{= flight.get("destination") }}
       </div>
       <div class="search_plane_name">
         plane_name
@@ -46,17 +46,12 @@
 
 <script id="seatSelectionTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  for row
-var
-    var newRow = $("<div>").attr( "id", "row" + row ) <!-- row1 -->
-    $("#seating-grid").append(newRow);
-      for col
-        var newSeat$("<div>").attr( "id", row + "-" + col )
-        var newSeat
-</script>
-  <div id="seating-grid">
-    <div class="single-seat">
+  <div>Seat 1</div>
+  <div>Seat 2</div>
+  <div>Seat 3</div>
+  <div>Seat 4</div>
+  <div>Seat 5</div>
 
-    </div>
-    Reservation stuff</div>
   <button id="reservationSubmit">Select Seat</button>
+
+</script>

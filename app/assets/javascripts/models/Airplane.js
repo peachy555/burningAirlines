@@ -1,3 +1,5 @@
 var App = App || {};
 
-App.Airplanes = Backbone.Model.extend({});
+App.Airplane = Backbone.Model.extend({
+
+});
