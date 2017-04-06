@@ -36,24 +36,26 @@
       <hr>
     </div>
   {{ }) }}
-  <div id="summary_display">
-    <div id="reservation_summary"></div>
-    <button id="reservation_submit">Confirm</button>
-  </div>
+  <div id="seat_selection">
 
-  <div id="seat_selection"></div>
+    <div id="summary_display">
+      <div id="reservation_summary"></div>
+      <button id="reservation_submit">Confirm</button>
+    </div>
+
+    <div id="seat_grid"></div>
+  </div>
 
 </script>
 
 <!-- ================================================================================ -->
 
-
-
-<!-- <script id="ReservationSummaryTemplate" type="text/template"> -->
+<script id="reservationSummaryTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  <!-- <div id="summary_flight_number"> -->
+  <div id="summary_flight_number">Flight Number: {{= flight.flight_number }}</div>
+  <div id="summary_flight_date">Date: {{= flight.date }}</div>
+  <div id="summary_flight_direction">Direction: {{= flight.departure }} -> {{= flight.destination }}</div>
+  <div id="summary_plane_name">Plane Model: {{= plane.name }}</div>
+  <div id="summary_selected_seat">Row: {{= seat[0] }} Col: {{= seat[1] }}</div>
 
-    <!-- {{= flight.get("flight_number") }} -->
-  <!-- </div> -->
-
-<!-- </script> -->
+</script>

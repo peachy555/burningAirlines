@@ -1,6 +1,6 @@
 var App = App || {};
-var lastSelectedSeat = '';
 var currSelectedSeat = '';
+var lastSelectedSeat = '';
 
 App.SeatSelectionView = Backbone.View.extend({
 
@@ -14,8 +14,10 @@ App.SeatSelectionView = Backbone.View.extend({
   },
 
   events: {
-    "click .seats": "select"
-    // "click #reservation_submit": "reservationSubmit"
+    "click .seats": "select",
+    "click #reservation_submit": function(){
+      this.reservationSubmit(currSelectedSeat);
+    }
   },
 
   el: "#seat_selection",
@@ -30,21 +32,19 @@ App.SeatSelectionView = Backbone.View.extend({
   select: function(event) {
     currSelectedSeat = $(event.target).attr("id");
 
-    if(this.checkSeatAvailable()) {
-      debugger
+    if(this.checkSeatAvailable(currSelectedSeat)) {
       if(lastSelectedSeat.length !== 0) {
         $("#" + lastSelectedSeat).css( "backgroundColor", "white" );
       }
       $("#" + currSelectedSeat).css( "backgroundColor", "gray" );
       lastSelectedSeat = currSelectedSeat;
-      this.reservationSummary();
+      this.reservationSummary(currSelectedSeat);
     } else {
       alert("Seat Reserved.");
     }
-
   },
 
-  checkSeatAvailable: function() {
+  checkSeatAvailable: function(currSelectedSeat) {
     var checkReservation = _.filter(this.collection.models, function(reservation) {
       var attr = reservation.attributes;
       return (attr.seat_row === currSelectedSeat.split("-")[0]) &&
@@ -53,7 +53,7 @@ App.SeatSelectionView = Backbone.View.extend({
     return checkReservation.length === 0 ? true : false // Available(true), Reserved(false)
   }, //checkSeatAvailable
 
-  reservationSummary: function() {
+  reservationSummary: function(currSelectedSeat) {
 
     var $summaryDisplay = $("#summary_display");
     $summaryDisplay.show();
@@ -62,37 +62,18 @@ App.SeatSelectionView = Backbone.View.extend({
     var flightAttr = App.flights.get(flightID).attributes;
     var planeID = flightAttr.airplane_id;
     var planeAttr = App.airplanes.get(planeID).attributes;
+    var seatArr = currSelectedSeat.split("-");
+
     var $reservationSummary = $("#reservation_summary");
-    $reservationSummary.empty();
-    var $flightName = $("<div>").attr("id", "summary_flight_number")
-                                .html("Flight Number: " + flightAttr.flight_number);
 
-    var $flightDate = $("<div>").attr("id", "summary_flight_date")
-                                .html("Date: " + flightAttr.flight_date);
+    var template = _.template($("#reservationSummaryTemplate").html());
+    var content = template({flight: flightAttr, plane: planeAttr, seat: seatArr});
+    $reservationSummary.html(content);
 
-    var $flightDirection = $("<div>").attr("id", "summary_flight_direction")
-                      .html("Direction: " + flightAttr.departure + " -> " + flightAttr.destination);
-
-    var $planeName = $("<div>").attr("id", "summary_plane_name")
-                                .html("Plane Model: " + planeAttr.name);
-
-    var $selectedSeat = $("<div>").attr("id", "summary_selected_seat")
-              .html("Row: " + currSelectedSeat.split("-")[0] + " Col: " + currSelectedSeat.split("-")[1]);
-
-    $reservationSummary.append($flightName)
-                       .append($flightDate)
-                       .append($flightDirection)
-                       .append($planeName)
-                       .append($selectedSeat);
-
-    var thisThing = this;
-    $(document).on("click", "#reservation_submit", function() {
-      thisThing.reservationSubmit();
-    });
   }, //reservationSummary
 
-  reservationSubmit: function(e) {
-    if(checkSeatAvailable()){
+  reservationSubmit: function(currSelectedSeat) {
+    if(this.checkSeatAvailable(currSelectedSeat)){
       console.log("seat still available");
       // Actual reservation
     } else {
