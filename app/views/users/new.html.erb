@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+    <!-- Choosing account type through dropdown menu -->
+    <%= f.select :user_type, [['Admin', 'Admin'], ['customer', 'customer']]%>
+  <p>
+    <%= f.submit "Signup" %>
+  </p>
+<%end%>

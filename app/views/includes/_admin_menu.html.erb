@@ -1,0 +1,13 @@
+ <!-- Create plane/ Create flight / Display user -->
+<div id="admin_menu">
+  <div class="admin menu_item">
+    <a href="/airplanes/admin">Planes</a>
+  </div>
+  <div class="admin menu_item">
+    <a href="/flights/admin">Flights</a>
+  </div>
+  <div class="admin menu_item">
+    <%= User.find(session[:user_id]).username %>
+    <%= link_to "Log out", logout_path, method: "delete" %>
+  </div>
+</div>

@@ -21,6 +21,6 @@ $(document).ready(function(){
   // })
 
   // setInterval(function(){
-  //   App.flights.fetch();
+  //   App.reservations.fetch();
   // }, 2000);
 });

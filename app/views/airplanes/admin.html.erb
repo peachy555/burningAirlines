@@ -1,0 +1,46 @@
+<!-- For Admin to create new airplane -->
+<hr><hr>
+
+<%= form_tag airplanes_path, method: "post" do %>
+  <span id="airplanes form_item">
+    <label>Plane name</label>
+    <input type="text" name="name"/>
+  </span>
+  <span id="airplanes form_item">
+    <label>Row</label>
+    <input type="text" name="row"/>
+  </span>
+  <span id="airplanes form_item">
+    <label>Col</label>
+    <input type="text" name="col"/>
+  </span>
+  <span id="airplanes form_item">
+    <input type="submit" value="Save"/>
+  </span>
+<% end %>
+
+<hr><hr>
+<!-- List all existing airplanes -->
+
+<% @airplanes.each do |airplane| %>
+  <div class="airplane_list_admin">
+    <div>
+      <span>Name: </span>
+      <span><%= airplane.name %></span>
+    </div>
+    <div>
+      <span>Row: </span>
+      <span><%= airplane.row %></span>
+    </div>
+    <div>
+      <span>Col: </span>
+      <span><%= airplane.col %></span>
+    </div>
+    <hr>
+  </div>
+
+<% end %>
+
+<!-- <script id="AirplanesListTemplate" type="text/template"> -->
+  <!-- Template show data of each airplane -->
+<!-- </script> -->

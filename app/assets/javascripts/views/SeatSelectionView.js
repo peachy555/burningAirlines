@@ -82,7 +82,9 @@ App.SeatSelectionView = Backbone.View.extend({
   createReservation: function () {
     var seatRow = $("#summary_seat_row_data").html();
     var seatCol = $("#summary_seat_col_data").html();
-    var userId = 1;
+     var userId = 1;
+
+     // Make Rails create reservation as well
     App.reservations.create({
       flight_id: this.flightId,
       seat_row: seatRow,

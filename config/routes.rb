@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "flights#search"
   get "/search", to: "flights#search", as: "search_flight"
-  resources :flights, only: [:index, :create, :show]   # For admin (show action for user)
+  resources :flights, only: [:index, :create]   # For admin (show action for user)
+  get "flights/admin", to: "flights#admin", as: "flights_admin"
   resources :airplanes, only: [:index, :create]   # For admin
+  get "airplanes/admin", to: "airplanes#admin", as: "airplanes_admin"
   resources :reservations, only: [:index, :create]
   resources :search, only: [:index] # For user
 

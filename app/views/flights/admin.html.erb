@@ -1,0 +1,52 @@
+<!-- For Admin to create new airplane -->
+<hr><hr>
+
+<%= form_tag flights_path, method: "post" do %>
+  <div id="fligts form_item">
+    <label>Flight Number</label>
+    <input type="text" name="flight_number"/>
+  </div>
+  <div id="flights form_item">
+    <label>Date</label>
+    <input type="text" name="date"/>
+  </div>
+  <div id="flights form_item">
+    <label>Direction</label>
+    <input type="text" name="departure"/>
+    <span> -> </span>
+    <input type="text" name="destination"/>
+  </div>
+  <div id="flights form_item">
+    <label>Airplane</label>
+    <select name="airplane_id">
+      <% @airplanes.each do |airplane| %>
+        <option value="<%= airplane.id %>"><%= airplane.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div id="flights form_item">
+    <input type="submit" value="Save"/>
+  </div>
+<% end %>
+
+<hr><hr>
+<!-- List all existing airplanes -->
+
+<% @flights.each do |flight| %>
+  <div class="airplane_list_admin">
+    <div>
+      <span>Flight Number: </span>
+      <span><%= flight.flight_number %></span>
+    </div>
+    <div>
+      <span>Date: </span>
+      <span><%= flight.date %></span>
+    </div>
+    <div>
+      <span>Direction: </span>
+      <span><%= flight.departure %> -> <%= flight.destination %></span>
+    </div>
+    <hr>
+  </div>
+
+<% end %>

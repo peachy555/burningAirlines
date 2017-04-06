@@ -9,3 +9,10 @@
   float: right;
   display: none;
 }
+
+.menu_item {
+  display: inline-block;
+  border: 1px solid black;
+  height: 20px;
+  width: 25%;
+}
