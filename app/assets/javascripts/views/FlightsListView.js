@@ -35,14 +35,15 @@ App.FlightsListView = Backbone.View.extend({
       }
     }
 
-    var flightReservation = _.filter(App.reservations.models, function(reservation) {
-    	return reservation.attributes.flight_id === flight.id
-    });
 
-    this.collection.models = flightReservation;
-    this.collection.length = flightReservation.length;
+    var reservedSeats = _.filter(App.reservations.models, function(res) {
+      return res.attributes.flight_id === flight.id });
 
-    var view = new App.SeatSelectionView({collection: this.collection});
+    var reservedSeatsCollection = new App.Reservations(reservedSeats)
+    // this.collection.models = flightReservation;
+    // this.collection.length = flightReservation.length;
+
+    var view = new App.SeatSelectionView({collection: reservedSeatsCollection});
     view.render();
     //
     // this.collection.models = [flight];

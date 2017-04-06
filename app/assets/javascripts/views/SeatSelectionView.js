@@ -74,10 +74,26 @@ App.SeatSelectionView = Backbone.View.extend({
 
   reservationSubmit: function(currSelectedSeat) {
     if(this.checkSeatAvailable(currSelectedSeat)){
-      console.log("seat still available");
+
+      this.createReservation();
+
+      console.log("reservation made");
       // Actual reservation
     } else {
       console.log("Seat taken!");
     }
+  },
+  createReservation: function () {
+    var flightId = this.collection.models[0].attributes.flight_id;
+    var seatRow = $("#summary_seat_row_data").html();
+    var seatCol = $("#summary_seat_col_data").html();
+    var userId = 1;
+    App.reservations.create({
+      flight_id: flightId,
+      seat_row: seatRow,
+      seat_col: seatCol,
+      user_id: userId
+    });
+
   }
 }); //App.SeatSelectionView

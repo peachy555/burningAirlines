@@ -52,10 +52,17 @@
 
 <script id="reservationSummaryTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  <div id="summary_flight_number">Flight Number: {{= flight.flight_number }}</div>
-  <div id="summary_flight_date">Date: {{= flight.date }}</div>
-  <div id="summary_flight_direction">Direction: {{= flight.departure }} -> {{= flight.destination }}</div>
-  <div id="summary_plane_name">Plane Model: {{= plane.name }}</div>
-  <div id="summary_selected_seat">Row: {{= seat[0] }} Col: {{= seat[1] }}</div>
+  <div id="summary_flight_number">Flight Number:
+    <span id="summary_flight_number_data">{{= flight.flight_number }}</span></div>
+  <div id="summary_flight_date">Date:
+    <span id="summary_flight_date_data">{{= flight.date }}</span> </div>
+  <div id="summary_flight_direction">Direction:
+    <span id="summary_flight_dep_data">{{= flight.departure }}</span> -> 
+    <span id="summary_flight_des_data">{{= flight.destination }}</span></div>
+  <div id="summary_plane_name">Plane Model:
+    <span id="summary_plane_name_data">{{= plane.name }}</span></div>
+  <div id="summary_selected_seat">Row:
+    <span id="summary_seat_row_data">{{= seat[0] }}</span> Col:
+    <span id="summary_seat_col_data">{{= seat[1] }}</span></div>
 
 </script>
