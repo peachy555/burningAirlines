@@ -27,6 +27,7 @@
       </div>
       <div class="search_plane_name">
         <!-- plane_name -->
+        {debugger}
         {{= App.airplanes.get(flight.get("airplane_id")).get("name") }}
         <!-- Find a way to get plane_id from flight -->
       </div>
@@ -57,7 +58,7 @@
   <div id="summary_flight_date">Date:
     <span id="summary_flight_date_data">{{= flight.date }}</span> </div>
   <div id="summary_flight_direction">Direction:
-    <span id="summary_flight_dep_data">{{= flight.departure }}</span> -> 
+    <span id="summary_flight_dep_data">{{= flight.departure }}</span> ->
     <span id="summary_flight_des_data">{{= flight.destination }}</span></div>
   <div id="summary_plane_name">Plane Model:
     <span id="summary_plane_name_data">{{= plane.name }}</span></div>

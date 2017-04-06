@@ -21,6 +21,7 @@ App.FlightsListView = Backbone.View.extend({
 
     var flightID = $(event.target.parentElement).attr("id");
     var flight = this.collection.get(flightID);
+    debugger
     var plane = App.airplanes.get(flight.get("airplane_id"));
     var planeRow = plane.get("row");
     var planeCol = plane.get("col");
