@@ -4,52 +4,23 @@ App.FlightsListView = Backbone.View.extend({
   events: {
     "click .flight_item": "showSeats"
   },
+
   initialize: function(options){
     this.listenTo(App.flights, "change sync", this.render);
   },
+
   el: "#flightsList",
+
   render: function(){
     var template = _.template($("#flightsListTemplate").html());
     this.$el.html(template(this.collection));
   },
 
   showSeats: function(event) {
-
-    var $summaryDisplay = $("#summary_display");
-    $summaryDisplay.hide();
-
-
-    var flightID = $(event.target.parentElement).attr("id");
-    var flight = this.collection.get(flightID);
-    debugger
-    var plane = App.airplanes.get(flight.get("airplane_id"));
-    var planeRow = plane.get("row");
-    var planeCol = plane.get("col");
-
-    $("#seat_grid").empty();
-    for (var r = 1; r <= planeRow; r++) {
-      var newRow = $("<div>").attr( "id" , "row" + r ).addClass("seatRows");
-      $("#seat_grid").append(newRow);
-      for (var c = 1; c <= planeCol; c++) {
-        var newSeat = $("<div>").attr( "id" , r + "-" + c ).addClass("seats");
-        newRow.append(newSeat);
-      }
+    if(this.seatView !== undefined){
+      this.seatView.remove();
     }
-
-
-    var reservedSeats = _.filter(App.reservations.models, function(res) {
-      return res.attributes.flight_id === flight.id });
-
-    var reservedSeatsCollection = new App.Reservations(reservedSeats)
-    // this.collection.models = flightReservation;
-    // this.collection.length = flightReservation.length;
-
-    var view = new App.SeatSelectionView({collection: reservedSeatsCollection});
-    view.render();
-    //
-    // this.collection.models = [flight];
-    // this.collection.length = 1;
-    // var template = _.template($("#flightsListTemplate").html());
-    // this.$el.html(template(this.collection));
+    this.seatView = new App.SeatSelectionView({flightID: $(event.target.parentElement).attr("id")});
+    this.seatView.render();
   }
 });

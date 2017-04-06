@@ -1,0 +1,8 @@
+<div id="customer_menu">
+  <div id="search">Search</div>
+  <% if(session[:user_id].empty?) { %>
+    <div id="user_status"><a href="#">Log in</a></div>
+  <% } else { %>
+    <div id="user_status"><%= User.find(session[:user_id]).username %></div>
+  <% } %>
+</div>

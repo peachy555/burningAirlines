@@ -27,7 +27,6 @@
       </div>
       <div class="search_plane_name">
         <!-- plane_name -->
-        {debugger}
         {{= App.airplanes.get(flight.get("airplane_id")).get("name") }}
         <!-- Find a way to get plane_id from flight -->
       </div>
@@ -53,17 +52,50 @@
 
 <script id="reservationSummaryTemplate" type="text/template">
   <!-- Template show data of each flight that matches search inputs -->
-  <div id="summary_flight_number">Flight Number:
-    <span id="summary_flight_number_data">{{= flight.flight_number }}</span></div>
-  <div id="summary_flight_date">Date:
-    <span id="summary_flight_date_data">{{= flight.date }}</span> </div>
-  <div id="summary_flight_direction">Direction:
-    <span id="summary_flight_dep_data">{{= flight.departure }}</span> ->
-    <span id="summary_flight_des_data">{{= flight.destination }}</span></div>
-  <div id="summary_plane_name">Plane Model:
-    <span id="summary_plane_name_data">{{= plane.name }}</span></div>
-  <div id="summary_selected_seat">Row:
-    <span id="summary_seat_row_data">{{= seat[0] }}</span> Col:
-    <span id="summary_seat_col_data">{{= seat[1] }}</span></div>
+  <div id="summary_flight_number">
+    <span>Flight Number: </span>
+    <span id="summary_flight_number_data">{{= flight.flight_number }}</span>
+  </div>
 
+  <div id="summary_flight_date">
+    <span>Date: </span>
+    <span id="summary_flight_date_data">{{= flight.date }}</span>
+  </div>
+
+  <div id="summary_flight_direction">Direction:
+    <span id="summary_flight_dep_data">{{= flight.departure }}</span>
+    <span> -> </span>
+    <span id="summary_flight_des_data">{{= flight.destination }}</span>
+  </div>
+
+  <div id="summary_plane_name">Plane Model:
+    <span id="summary_plane_name_data">{{= plane.name }}</span>
+  </div>
+
+  <div id="summary_selected_seat">
+    <span>Row: <span>
+    <span id="summary_seat_row_data">{{= seat[0] }}</span>
+    <span> Col: <span>
+    <span id="summary_seat_col_data">{{= seat[1] }}</span>
+  </div>
+
+</script>
+
+<script id="seatSelectionTemplate" type="text/template">
+  <div id="seat_grid">
+    {{ for(var r=1; r <= plane.get("row"); r++){ }}
+      <div id="row{{= r }}" class="seatRows">
+        {{ for(var c=1; c <= plane.get("col"); c++){ }}
+
+          {{ var seat = _.where(reservations, {seat_row: r.toString(), seat_col: c.toString()}) }}
+
+          {{ if(seat.length > 0){ }}
+            <div id="{{= r }}-{{= c }}" class="seats" style="background-color:red"></div>
+          {{ }else{ }}
+            <div id="{{= r }}-{{= c }}" class="seats"></div>
+          {{ } }}
+        {{ } }}
+      </div>
+    {{ } }}
+  </div>
 </script>

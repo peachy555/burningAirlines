@@ -6,7 +6,10 @@ App.Router = Backbone.Router.extend({
   },
   index: function(){
     console.log("in Router search");
-    var view = new App.FlightSearchView({collection: App.flights});
-    view.render();
+    if(this.indexView !== undefined){
+      this.indexView.remove();
+    }
+    this.indexView = new App.FlightSearchView({collection: App.flights});
+    this.indexView.render();
   }
 })

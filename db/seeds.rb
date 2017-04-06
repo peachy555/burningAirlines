@@ -12,36 +12,45 @@ Reservation.destroy_all
 
 users = [
   {
-    username: "Peach"
+    username: "Peach",
+    user_type: "Admin"
   },
   {
-    username: "Jared"
+    username: "Jared",
+    user_type: "Admin"
   },
   {
-    username: "Diego"
+    username: "Diego",
+    user_type: "Customer"
   },
   {
-    username: "Hen"
+    username: "Hen",
+    user_type: "Customer"
   },
   {
-    username: "Petr"
+    username: "Petr",
+    user_type: "Customer"
   },
   {
-    username: "Kevin"
+    username: "Kevin",
+    user_type: "Customer"
   },
   {
-    username: "Gin"
+    username: "Gin",
+    user_type: "Customer"
   },
   {
-    username: "Xander"
+    username: "Xander",
+    user_type: "Admin"
   },
   {
-    username: "Luke"
+    username: "Luke",
+    user_type: "Admin"
   },
 ]
 
 users.each do |user|
-  new_user = User.new(username: user[:username])
+  new_user = User.new(username: user[:username], user_type: user[:user_type])
   new_user.save
 end
 
@@ -61,24 +70,24 @@ airplanes = [
         destination: "MEL",
         reservations: [
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           }
         ] # reservations
       },
@@ -89,9 +98,9 @@ airplanes = [
         destination: "DRW",
         reservations: [
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           }
         ] # reservations
       },
@@ -102,14 +111,14 @@ airplanes = [
         destination: "PER",
         reservations: [
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(10)+1).to_s,
-            seat_col: (rand(6)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..10).to_s,
+            seat_col: rand(1..6).to_s
           },
         ] # reservations
       },
@@ -128,14 +137,14 @@ airplanes = [
         destination: "CBR",
         reservations: [
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           }
         ] # reservations
       },
@@ -146,34 +155,34 @@ airplanes = [
         destination: "HBA",
         reservations: [
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           },
           {
-            user_id: User.find(rand(9)+1).id,
-            seat_row: (rand(8)+1).to_s,
-            seat_col: (rand(4)+1).to_s
+            user_id: User.all[rand(9)].id,
+            seat_row: rand(1..8).to_s,
+            seat_col: rand(1..4).to_s
           }
         ] # reservations
       }

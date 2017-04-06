@@ -13,34 +13,26 @@ App.FlightSearchView = Backbone.View.extend({
     // Filter for desired flights
     if( (typeof dept === "undefined" && typeof dest === "undefined") ||
         (dept.length === 0 && dest.length === 0) ){
+      // Display all flights for first time page renders or empty search inputs
       var view = new App.FlightsListView({collection: App.flights});
       view.render();
     } else {
-      var sortedFlight = _.filter(App.flights.models, function(flight) {
+      // searchFlights
+      var searchedFlights = _.filter(App.flights.models, function(flight) {
         var flightAttr = flight.attributes;
       	return ((flightAttr.destination === dest) && (flightAttr.departure === dept));
       });
-      // sort this.collection
-
-      App.flights2 = new App.Flights();
-      App.flights2.fetch().done(function(data){
-        var customCollection = App.flights2;
-        customCollection.models = sortedFlight;
-        customCollection.length = sortedFlight.length;
-        // var view = new App.FlightsListView({collection: sortedFlight});
-        if(customCollection.length === 0) {
-          var view = new App.FlightsListView({collection: App.flights});
-          alert("No matching search results!");
-        } else {
-          var view = new App.FlightsListView({collection: customCollection});
-        }
-        view.render();
-
-      });
+      // Display search results
+      var searchedFlightsCollection = new App.Flights(searchedFlights);
+      if(searchedFlights.length === 0) {
+        var view = new App.FlightsListView({collection: App.flights});
+      } else {
+        var view = new App.FlightsListView({collection: searchedFlightsCollection});
+      }
+      view.render();
     }
   },
   search: function() {
-    console.log("start FlightSearchView search");
     var dept = this.$el.find("#search_dept").val();
     var dest = this.$el.find("#search_dest").val();
     this.render(dept, dest);
