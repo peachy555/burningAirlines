@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
   end
 
   def admin
-    @flights = Flight.all
+    @flights = Flight.all.sort_by( &:date ).reverse
     @airplanes = Airplane.all
   end
 

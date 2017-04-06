@@ -46,6 +46,10 @@
       <span>Direction: </span>
       <span><%= flight.departure %> -> <%= flight.destination %></span>
     </div>
+    <div>
+      <span>Airplane Name: </span>
+      <span><%= @airplanes.find(flight.airplane_id).name %></span>
+    </div>
     <hr>
   </div>
 
