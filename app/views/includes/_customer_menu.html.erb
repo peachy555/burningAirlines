@@ -6,7 +6,7 @@
   </div>
   <% if user.present? %>
     <div class="customer menuitem">
-      <%= User.find(session[:user_id]).username %>
+      <%= link_to User.find(session[:user_id]).username, user_path(id: session[:user_id])  %>
       <%= link_to "Log out", logout_path, method: "delete" %>
     </div>
   <% else  %>

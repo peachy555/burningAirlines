@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user_reservations = User.find_by_id(session[:user_id]).reservations
+    @flights = Flight.all
+    @planes = Airplane.all
+  end
+
   private
 
   def clean_params

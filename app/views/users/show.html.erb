@@ -1,0 +1,19 @@
+<%#binding.pry %>
+
+<% @user_reservations.each do |res| %>
+  <hr>
+  <div class="bookings">
+    <div class="flight_itenaries flight_date">Date: <%= @flights.find(res.flight_id).date %></div>
+    <div class="flight_itenaries flight_direction">
+      <span>Direction: </span>
+      <%= @flights.find(res.flight_id).departure %>
+      <span> -> </span>
+      <%= @flights.find(res.flight_id).destination %>
+    </div>
+    <div class="flight_itenaries plane_name">
+      <span>Plane Name: </span>
+      <%= @planes.find(@flights.find(res.flight_id).airplane_id).name %>
+    </div>
+    <div class="flight_itenaries seat_data">Row: <%= res.seat_row %> | Col: <%= res.seat_col %></div>
+  </div>
+<% end %>
