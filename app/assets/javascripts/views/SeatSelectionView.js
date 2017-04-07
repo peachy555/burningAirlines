@@ -102,6 +102,8 @@ App.SeatSelectionView = Backbone.View.extend({
   },
   remove: function() {
     // this.$el.empty().off(); /* off to unbind the events */
+    currSelectedSeat = '';
+    lastSelectedSeat = '';
     this.$el.off();
     $("#reservation_summary").empty();
     $("#seat_grid").empty();
