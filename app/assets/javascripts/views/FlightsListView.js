@@ -12,6 +12,8 @@ App.FlightsListView = Backbone.View.extend({
   el: "#flightsList",
 
   render: function(){
+    currSelectedSeat = '';
+    lastSelectedSeat = '';
     var template = _.template($("#flightsListTemplate").html());
     this.$el.html(template(this.collection));
   },
