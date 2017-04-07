@@ -8,7 +8,7 @@
   </div>
   <div id="flights form_item">
     <label>Date</label>
-    <input type="text" name="date"/>
+    <input  type="date" min="2017-01-01" max="2017-12-31" value="<%= Time.now.to_date %>" name="date"/>
   </div>
   <div id="flights form_item">
     <label>Direction</label>
