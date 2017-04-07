@@ -7,7 +7,7 @@ App.SeatSelectionView = Backbone.View.extend({
   initialize: function(options){
     this.flightID = options.flightID;
     this.flight = App.flights.get(this.flightID);
-    this.listenTo(App.reservations, "change sync", this.render);
+    this.listenTo(App.flights, "change", this.render);
   },
 
   events: {
@@ -28,14 +28,18 @@ App.SeatSelectionView = Backbone.View.extend({
 
   select: function(event) {
     currSelectedSeat = $(event.target).attr("id");
+    this.render();
 
     if(this.checkSeatAvailable(currSelectedSeat)) {
       if(lastSelectedSeat.length !== 0) {
+        if(this.checkSeatAvailable(lastSelectedSeat)) {
         $("#" + lastSelectedSeat).css( "backgroundColor", "white" );
+        console.log("turn white");
+        }
       }
       $("#" + currSelectedSeat).css( "backgroundColor", "gray" );
-      lastSelectedSeat = currSelectedSeat;
       this.reservationSummary(currSelectedSeat);
+      lastSelectedSeat = currSelectedSeat;
     } else {
       alert("Seat Reserved.");
     }
@@ -82,11 +86,11 @@ App.SeatSelectionView = Backbone.View.extend({
   createReservation: function () {
     var seatRow = $("#summary_seat_row_data").html();
     var seatCol = $("#summary_seat_col_data").html();
-     var userId = 1;
+    var userId = 1;
 
      // Make Rails create reservation as well
     App.reservations.create({
-      flight_id: this.flightId,
+      flight_id: parseInt(this.flightID),
       seat_row: seatRow,
       seat_col: seatCol,
       user_id: userId
@@ -94,7 +98,10 @@ App.SeatSelectionView = Backbone.View.extend({
 
   },
   remove: function() {
-    this.$el.empty().off(); /* off to unbind the events */
+    // this.$el.empty().off(); /* off to unbind the events */
+    this.$el.off();
+    $("#reservation_summary").empty();
+    $("#seat_grid").empty();
     this.stopListening();
     return this;
   }

@@ -6,7 +6,7 @@ App.FlightsListView = Backbone.View.extend({
   },
 
   initialize: function(options){
-    this.listenTo(App.flights, "change sync", this.render);
+    // this.listenTo(App.flights, "change sync", this.render);
   },
 
   el: "#flightsList",
@@ -17,10 +17,10 @@ App.FlightsListView = Backbone.View.extend({
   },
 
   showSeats: function(event) {
-    if(this.seatView !== undefined){
-      this.seatView.remove();
+    if(App.seatView !== undefined){
+      App.seatView.remove();
     }
-    this.seatView = new App.SeatSelectionView({flightID: $(event.target.parentElement).attr("id")});
-    this.seatView.render();
+    App.seatView = new App.SeatSelectionView({flightID: $(event.target.parentElement).attr("id")});
+    App.seatView.render();
   }
 });

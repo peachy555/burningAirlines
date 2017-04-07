@@ -87,7 +87,6 @@
         {{ for(var c=1; c <= plane.get("col"); c++){ }}
 
           {{ var seat = _.where(reservations, {seat_row: r.toString(), seat_col: c.toString()}) }}
-
           {{ if(seat.length > 0){ }}
             <div id="{{= r }}-{{= c }}" class="seats" style="background-color:red"></div>
           {{ }else{ }}

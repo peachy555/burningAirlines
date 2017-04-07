@@ -20,7 +20,8 @@ $(document).ready(function(){
   //   console.log("submit button");
   // })
 
-  // setInterval(function(){
-  //   App.reservations.fetch();
-  // }, 2000);
+  setInterval(function(){
+    App.reservations.fetch();
+    App.flights.fetch();
+  }, 2000);
 });
