@@ -24,6 +24,9 @@ App.SeatSelectionView = Backbone.View.extend({
 
     var template = _.template($("#seatSelectionTemplate").html())
     $("#seat_grid").html(template({plane: plane, reservations: this.flight.get("reservations")}));
+    if( (currSelectedSeat.length !== 0) && (this.checkSeatAvailable(currSelectedSeat)) ) {
+      $("#" + currSelectedSeat).css( "backgroundColor", "gray" );
+    }
   },
 
   select: function(event) {
